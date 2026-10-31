@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+        <h1>Hello, {{ user.username }}</h1>
+        {% for x in posts %}
+        <p>{{x.username}}, {{x.body}}</p>
+        {% endfor %}
+{% endblock %}
