@@ -162,6 +162,9 @@ adding messages so that ust becomes a messaging platfor
 i have been able to get a list of all users in tnto profile.html, now i want to make them into links to theor profiles. sidenote: writing {{ user.username }} instead of <p>{{ user.username }} </p>, u get a single luine of usernames instead of a list
     adding links, able to add, huge sexurity issue, links go to their profile page where they can change theior about me and updfate view. have to create one more profilepage jst for viewing. created it called profile_for_view, route also changed to go to anoither link called view_user/username
                 
-
+terminal shortcut
+in bash type 
+        
+        alias start="python -i -c 'from app import app, db; from app.models import Personell, ippt; import sqlalchemy as sa; app.app_context().push(); print(\"Ready\")'"
 
 
