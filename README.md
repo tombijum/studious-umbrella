@@ -87,7 +87,7 @@ db.session.add is used in registration to update the databse with the new user, 
 
 Registration 
 MADE USER SIGNUP POSSIBLE WOOHOOOOO, TO SEE THE USERS LOGGED IN.... IN PYTHON TERMINL WRITE
-    
+
     >>> from app import app, db
     >>> from app.models import User, Post
     >>> import sqlalchemy as sa
@@ -102,6 +102,30 @@ MADE USER SIGNUP POSSIBLE WOOHOOOOO, TO SEE THE USERS LOGGED IN.... IN PYTHON TE
     >>> for u in users:
     ...     print(u.id, u.username)
     ...
+
+    #method 3 
+    >>> u = db.session.get(User, 1)
+    >>> u
+
+Commiting  
+(adding someone in using terminal)
+impt part is that after step 4 need to imeditaly do rest of stepes, if u try like to do other things btw step 4 and 5 like >>> users = db.session.scalars(query),  >>> for u in users:, ..     print(u.id, u.username), then have to redo steps 1 to 6 again
+
+    >>> from app import app, db #step 1
+    >>> from app.models import User, Post #step 2
+    >>> import sqlalchemy as sa #step 3
+    >>> app.app_context().push()  #step4
+    >>> db.session.add(Personell(username='Tom')) #step 5  
+    >>> db.session.commit() #step6
+
+Adding Post 
+cant add post as variable straight into user, have to do this...
+
+        >>> u = db.session.get(User, 1)
+        >>> p = Post(body='my first post!', author=u)
+        >>> db.session.add(p)
+        >>> db.session.commit()
+
 
 
 how does login form work
