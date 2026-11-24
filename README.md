@@ -84,49 +84,52 @@ db.session.add is used in registration to update the databse with the new user, 
     ###picks out any username in the USER class stores that is same as username data jst enetered in form, to cjeck if person is alrdy signed up.###
 ******THE WHOLE PART OF FUNCTION OF ADDING THE USERNAME TO THE DATATBASE IS UNDER IF FORM.VALIDATE ON SUBMIT SECTION IN ROUTES.PY******
 ******The form.validate_on_submit() method does all the form processing work******
-
-Registration 
-MADE USER SIGNUP POSSIBLE WOOHOOOOO, TO SEE THE USERS LOGGED IN.... IN PYTHON TERMINL WRITE
-
-    >>> from app import app, db
-    >>> from app.models import User, Post
-    >>> import sqlalchemy as sa
-    >>> app.app_context().push()
     
-    ##method 1 
-    >>> users = db.session.scalars(sa.select(User)).all()
-    >>> users
+    Registration 
+    MADE USER SIGNUP POSSIBLE WOOHOOOOO, TO SEE THE USERS LOGGED IN.... IN PYTHON TERMINL WRITE
     
-    ##method 2 
-    >>> users = db.session.scalars(query)
-    >>> for u in users:
-    ...     print(u.id, u.username)
-    ...
-
-    #method 3 
-    >>> u = db.session.get(User, 1)
-    >>> u
-
-Commiting  
-(adding someone in using terminal)
-impt part is that after step 4 need to imeditaly do rest of stepes, if u try like to do other things btw step 4 and 5 like >>> users = db.session.scalars(query),  >>> for u in users:, ..     print(u.id, u.username), then have to redo steps 1 to 6 again
-
-    >>> from app import app, db #step 1
-    >>> from app.models import User, Post #step 2
-    >>> import sqlalchemy as sa #step 3
-    >>> app.app_context().push()  #step4
-    >>> db.session.add(Personell(username='Tom')) #step 5  
-    >>> db.session.commit() #step6
-
-Adding Post 
-cant add post as variable straight into user, have to do this...
-
+        >>> from app import app, db
+        >>> from app.models import User, Post
+        >>> import sqlalchemy as sa
+        >>> app.app_context().push()
+        
+        ##method 1 
+        >>> users = db.session.scalars(sa.select(User)).all()
+        >>> users
+        
+        ##method 2 
+        >>> users = db.session.scalars(query)
+        >>> for u in users:
+        ...     print(u.id, u.username)
+        ...
+    
+        #method 3 
         >>> u = db.session.get(User, 1)
-        >>> p = Post(body='my first post!', author=u)
-        >>> db.session.add(p)
-        >>> db.session.commit()
-
-
+        >>> u
+    
+    Commiting  
+    (adding someone in using terminal)
+    impt part is that after step 4 need to imeditaly do rest of stepes, if u try like to do other things btw step 4 and 5 like >>> users = db.session.scalars(query),  >>> for u in users:, ..     print(u.id, u.username), then have to redo steps 1 to 6 again
+    
+        >>> from app import app, db #step 1
+        >>> from app.models import User, Post #step 2
+        >>> import sqlalchemy as sa #step 3
+        >>> app.app_context().push()  #step4
+        >>> db.session.add(Personell(username='Tom')) #step 5  
+        >>> db.session.commit() #step6
+    
+    Adding Post 
+    cant add post as variable straight into user, have to do this...
+    
+            >>> u = db.session.get(User, 1)
+            >>> p = Post(body='my first post!', author=u)
+            >>> db.session.add(p)
+            >>> db.session.commit()
+    
+    Rollback
+     when somehtings is wrong write to go back in termianl
+ 
+     db.session.rollback()
 
 how does login form work
 @app.route('/login', methods=['GET', 'POST'])
